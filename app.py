@@ -1,7 +1,7 @@
 import streamlit as st
 import cv2
 import numpy as np
-import mediapipe as mp
+from mediapipe.python.solutions import face_mesh
 from skimage.color import deltaE_ciede2000
 
 # --- Configuração da Página ---
@@ -34,7 +34,12 @@ st.markdown("""
 # Inicializa MediaPipe
 @st.cache_resource
 def get_facemesh():
-    return mp.solutions.face_mesh.FaceMesh(static_image_mode=True, max_num_faces=1, refine_landmarks=True)
+    # AQUI MUDOU: Usamos 'face_mesh.FaceMesh' diretamente, em vez de 'mp.solutions.face_mesh...'
+    return face_mesh.FaceMesh(
+        static_image_mode=True, 
+        max_num_faces=1, 
+        refine_landmarks=True
+    )
 
 # --- Funções Auxiliares ---
 def get_lab_color(img_lab, mask):
