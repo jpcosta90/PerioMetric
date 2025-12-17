@@ -1,5 +1,5 @@
 streamlit
-mediapipe==0.10.9 "protobuf>=3.20,<4"
+mediapipe==0.10.9
 protobuf>=3.20,<4
 opencv-python-headless
 numpy
